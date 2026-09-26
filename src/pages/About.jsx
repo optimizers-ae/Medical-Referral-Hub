@@ -82,7 +82,7 @@ const About = () => {
               <img
                 src={hospitalImg}
                 alt="Modern international healthcare facility"
-                className="w-full h-[400px] object-cover"
+                className="w-full h-[400px] object-cover rounded-2xl"
                 loading="lazy"
               />
               <div className="absolute -bottom-4 -right-4 w-1/2 h-20 bg-[#EEF4F8] border-l-4 border-[#27689A] z-[-1]" aria-hidden="true" />
@@ -104,7 +104,7 @@ const About = () => {
               <img
                 src={travelImg}
                 alt="International patient travel coordination"
-                className="w-full h-[400px] object-cover"
+                className="w-full h-[400px] object-cover rounded-2xl"
                 loading="lazy"
               />
             </motion.div>

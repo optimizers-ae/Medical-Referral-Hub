@@ -12,7 +12,7 @@ import { imageReveal, fadeUp, viewportConfig } from '../utils/animations.js';
 const PageHero = ({ eyebrow, title, subtitle, image, centered = true }) => {
   return (
     <section
-      className="relative min-h-[52vh] flex items-end pt-28 pb-16 md:pt-36 md:pb-20 overflow-hidden"
+      className="relative h-screen flex items-end pt-28 pb-16 md:pt-36 md:pb-20 overflow-hidden"
       aria-label="Page hero"
     >
       {/* Background image */}

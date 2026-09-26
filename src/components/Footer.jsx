@@ -17,7 +17,7 @@ const Footer = () => {
               <img
                 src={logo}
                 alt="Medical Referral Hub Logo"
-                className="h-14 w-auto object-contain mb-5 brightness-0 invert"
+                className="logo-img h-14 w-auto object-contain mb-5 brightness-0 invert mix-blend-screen"
               />
             </Link>
             <p className="text-[#7FA5BE] text-xs font-semibold tracking-[0.15em] uppercase mb-3">

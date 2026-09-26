@@ -1,14 +1,18 @@
 import { useState, useEffect } from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
 import { NAV_LINKS } from '../data/index.js';
-import logo from '../assets/logo.jpeg';
+import logo from '../assets/logo.png';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
+  
+  const isHomePage = location.pathname === '/';
+  const isDarkBg = !isHomePage && !scrolled;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
@@ -53,7 +57,7 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Medical Referral Hub Logo"
-              className="h-12 w-auto object-contain"
+              className={`logo-img h-12 w-auto object-contain transition-all ${isDarkBg ? 'brightness-0 invert' : ''}`}
             />
           </Link>
 
@@ -66,9 +70,9 @@ const Navbar = () => {
                   className={({ isActive }) =>
                     `text-sm font-medium tracking-wide transition-colors duration-200 relative group ${
                       isActive
-                        ? 'text-[#27689A]'
-                        : scrolled
-                        ? 'text-[#172A3A] hover:text-[#27689A]'
+                        ? (isDarkBg ? 'text-white' : 'text-[#27689A]')
+                        : isDarkBg
+                        ? 'text-white/80 hover:text-white'
                         : 'text-[#172A3A] hover:text-[#27689A]'
                     }`
                   }
@@ -92,7 +96,9 @@ const Navbar = () => {
           <div className="hidden lg:flex items-center gap-3">
             <a
               href="tel:+1-000-000-0000"
-              className="flex items-center gap-2 text-sm font-medium text-[#27689A] hover:text-[#0B2E50] transition-colors duration-200"
+              className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
+                isDarkBg ? 'text-white hover:text-white/80' : 'text-[#27689A] hover:text-[#0B2E50]'
+              }`}
               aria-label="Talk to our team"
             >
               <Phone size={15} strokeWidth={2} />
@@ -110,7 +116,9 @@ const Navbar = () => {
           {/* Mobile Menu Toggle */}
           <button
             id="mobile-menu-btn"
-            className="lg:hidden p-2 text-[#0B2E50] hover:text-[#27689A] transition-colors"
+            className={`lg:hidden p-2 transition-colors ${
+              isDarkBg ? 'text-white hover:text-white/80' : 'text-[#0B2E50] hover:text-[#27689A]'
+            }`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
             aria-expanded={menuOpen}
@@ -144,7 +152,7 @@ const Navbar = () => {
             >
               {/* Mobile menu header */}
               <div className="flex items-center justify-between p-6 border-b border-[#D8D7D2]/60">
-                <img src={logo} alt="Medical Referral Hub" className="h-10 w-auto" />
+                <img src={logo} alt="Medical Referral Hub" className="logo-img h-10 w-auto mix-blend-multiply" />
                 <button
                   onClick={() => setMenuOpen(false)}
                   className="p-2 text-[#0B2E50] hover:text-[#27689A]"

@@ -27,6 +27,12 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* Round images site-wide */
+img:not(.logo-img) {
+  border-radius: 1rem;
+}
+
+
 /* Utility: Brand leaf/petal shape used as decorative background element */
 .leaf-shape {
   border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;

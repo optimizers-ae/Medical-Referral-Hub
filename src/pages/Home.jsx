@@ -29,7 +29,7 @@ const Home = () => {
     <main>
       {/* ===== HERO ===== */}
       <section
-        className="relative min-h-screen flex items-center overflow-hidden bg-[#F8F7F3]"
+        className="relative h-screen flex items-center overflow-hidden bg-[#F8F7F3]"
         aria-label="Hero section"
       >
         {/* Background decorative leaf shapes */}
