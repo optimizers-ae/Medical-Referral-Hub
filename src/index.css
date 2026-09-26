@@ -1,1 +1,67 @@
 @import "tailwindcss";
+
+@theme {
+  --color-navy: #0B2E50;
+  --color-navy-dark: #071e35;
+  --color-blue-med: #27689A;
+  --color-blue-soft: #7FA5BE;
+  --color-silver: #D8D7D2;
+  --color-offwhite: #F8F7F3;
+  --color-text: #172A3A;
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  color: #172A3A;
+  background-color: #F8F7F3;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Utility: Brand leaf/petal shape used as decorative background element */
+.leaf-shape {
+  border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+}
+
+.leaf-shape-alt {
+  border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #F8F7F3;
+}
+::-webkit-scrollbar-thumb {
+  background: #7FA5BE;
+  border-radius: 3px;
+}
+
+/* Trust strip animation */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-animate {
+  animation: ticker 30s linear infinite;
+}
+
+/* Line clamp */
+.line-clamp-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
