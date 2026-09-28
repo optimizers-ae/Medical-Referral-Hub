@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import {
-  fadeUp, fadeIn, fadeLeft, fadeRight,
+  fadeUp, fadeLeft, fadeRight,
   staggerContainer, staggerItem, imageReveal,
   viewportConfig,
 } from '../utils/animations.js';
@@ -29,7 +29,7 @@ const Home = () => {
     <main>
       {/* ===== HERO ===== */}
       <section
-        className="relative h-screen flex items-center overflow-hidden bg-[#F8F7F3]"
+        className="relative min-h-[calc(100vh-5rem)] lg:min-h-0 lg:h-screen mt-20 lg:mt-0 flex items-center overflow-hidden bg-[#F8F7F3]"
         aria-label="Hero section"
       >
         {/* Background decorative leaf shapes */}
@@ -42,13 +42,13 @@ const Home = () => {
           aria-hidden="true"
         />
 
-        <div className="max-w-7xl mx-auto w-full px-5 md:px-8 lg:px-10 pt-28 pb-16 md:pt-36 lg:pt-32 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="max-w-7xl mx-auto w-full px-5 md:px-8 lg:px-10 pt-10 pb-16 md:pt-20 lg:pt-32 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left: Text */}
           <motion.div
             variants={staggerContainer}
             initial="hidden"
             animate="visible"
-            className="flex flex-col gap-5"
+            className="flex flex-col gap-5 text-center lg:text-left items-center lg:items-start"
           >
             <motion.p
               variants={fadeUp}
@@ -83,7 +83,7 @@ const Home = () => {
               their medical journey.
             </motion.p>
 
-            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 mt-2">
+            <motion.div variants={fadeUp} className="flex flex-col sm:flex-row gap-3 mt-2 justify-center lg:justify-start w-full">
               <Link
                 id="hero-primary-cta"
                 to="/contact"
@@ -170,7 +170,7 @@ const Home = () => {
               initial="hidden"
               whileInView="visible"
               viewport={viewportConfig}
-              className="flex flex-col gap-5"
+              className="flex flex-col gap-5 text-center lg:text-left items-center lg:items-start"
             >
               <SectionHeading
                 eyebrow="About Medical Referral Hub"
@@ -220,7 +220,7 @@ const Home = () => {
       {/* ===== CORE SERVICES ===== */}
       <section className="py-20 md:py-28 bg-white" aria-labelledby="services-heading">
         <div className="max-w-7xl mx-auto px-5 md:px-8 lg:px-10">
-          <div className="mb-12 flex flex-col md:flex-row md:items-end md:justify-between gap-6">
+          <div className="mb-12 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 text-center lg:text-left items-center lg:items-start">
             <SectionHeading
               eyebrow="Our Services"
               heading="Healthcare Facilitation, From Referral to Travel."
@@ -246,7 +246,7 @@ const Home = () => {
               <motion.article
                 key={service.id}
                 variants={staggerItem}
-                className="bg-white p-8 group hover:bg-[#EEF4F8] transition-colors duration-300 relative overflow-hidden"
+                className="bg-white p-8 group hover:bg-[#EEF4F8] transition-colors duration-300 relative overflow-hidden text-center lg:text-left flex flex-col items-center lg:items-start"
               >
                 <span className="block text-[3.5rem] font-bold leading-none text-[#D8D7D2] group-hover:text-[#27689A]/15 transition-colors duration-400 mb-4 select-none">
                   {service.number}
@@ -272,7 +272,7 @@ const Home = () => {
 
         <div className="relative z-10 max-w-7xl mx-auto px-5 md:px-8 lg:px-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <div>
+            <div className="text-center lg:text-left flex flex-col items-center lg:items-start">
               <SectionHeading
                 eyebrow="Global Access"
                 heading="Connecting Patients With Healthcare Beyond Borders."
@@ -285,10 +285,10 @@ const Home = () => {
                 initial="hidden"
                 whileInView="visible"
                 viewport={viewportConfig}
-                className="mt-8 grid grid-cols-2 gap-4"
+                className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4"
               >
                 {['Multiple Destinations', 'International Coordination', 'Multilingual Support', 'End-to-End Assistance'].map((item) => (
-                  <div key={item} className="flex items-center gap-2.5">
+                  <div key={item} className="flex items-center justify-center lg:justify-start gap-2.5">
                     <div className="w-1.5 h-1.5 rounded-full bg-[#7FA5BE] flex-shrink-0" aria-hidden="true" />
                     <span className="text-white/70 text-sm">{item}</span>
                   </div>
@@ -336,9 +336,9 @@ const Home = () => {
               <motion.div
                 key={point.number}
                 variants={staggerItem}
-                className="flex gap-6 items-start group"
+                className="flex flex-col lg:flex-row gap-4 lg:gap-6 items-center lg:items-start group text-center lg:text-left"
               >
-                <span className="text-[5rem] font-bold leading-none text-[#D8D7D2] group-hover:text-[#27689A]/20 transition-colors duration-400 select-none flex-shrink-0 mt-[-1rem]">
+                <span className="text-[4rem] lg:text-[5rem] font-bold leading-none text-[#D8D7D2] group-hover:text-[#27689A]/20 transition-colors duration-400 select-none flex-shrink-0 lg:mt-[-1rem]">
                   {point.number}
                 </span>
                 <div className="pt-1">
@@ -361,7 +361,7 @@ const Home = () => {
               initial="hidden"
               whileInView="visible"
               viewport={viewportConfig}
-              className="flex flex-col gap-5"
+              className="flex flex-col gap-5 text-center lg:text-left items-center lg:items-start"
             >
               <SectionHeading
                 eyebrow="The Full Journey"
@@ -378,7 +378,7 @@ const Home = () => {
               </motion.p>
 
               {/* Journey flow */}
-              <motion.div variants={fadeUp} className="mt-2 space-y-0">
+              <motion.div variants={fadeUp} className="mt-2 space-y-0 inline-block mx-auto lg:mx-0 text-left">
                 {['Medical Need', 'Healthcare Options', 'Referral Coordination', 'Visa & Travel', 'Arrival & Care Journey'].map((stage, i, arr) => (
                   <div key={stage} className="flex items-start gap-3">
                     <div className="flex flex-col items-center flex-shrink-0 pt-1">

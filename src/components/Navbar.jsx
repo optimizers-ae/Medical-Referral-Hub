@@ -1,36 +1,38 @@
-import { useState, useEffect } from 'react';
-import { Link, NavLink, useNavigate, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Phone } from 'lucide-react';
-import { NAV_LINKS } from '../data/index.js';
-import logo from '../assets/logo.png';
+import { useState, useEffect } from "react";
+import { Link, NavLink, useNavigate, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import { Menu, X, Phone } from "lucide-react";
+import { NAV_LINKS } from "../data/index.js";
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-  
-  const isHomePage = location.pathname === '/';
+
+  const isHomePage = location.pathname === "/";
   const isDarkBg = !isHomePage && !scrolled;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   useEffect(() => {
     if (menuOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     }
-    return () => { document.body.style.overflow = ''; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
   const handleCTA = () => {
-    navigate('/contact');
+    navigate("/contact");
     setMenuOpen(false);
   };
 
@@ -39,8 +41,8 @@ const Navbar = () => {
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-[#D8D7D2]/60'
-            : 'bg-transparent'
+            ? "bg-white/95 backdrop-blur-md shadow-sm border-b border-[#D8D7D2]/60"
+            : "bg-transparent"
         }`}
         role="banner"
       >
@@ -57,7 +59,7 @@ const Navbar = () => {
             <img
               src={logo}
               alt="Medical Referral Hub Logo"
-              className={`logo-img h-12 w-auto object-contain transition-all ${isDarkBg ? 'brightness-0 invert' : ''}`}
+              className={`logo-img h-12 w-auto object-contain transition-all ${isDarkBg ? "brightness-0 invert" : ""}`}
             />
           </Link>
 
@@ -70,10 +72,12 @@ const Navbar = () => {
                   className={({ isActive }) =>
                     `text-sm font-medium tracking-wide transition-colors duration-200 relative group ${
                       isActive
-                        ? (isDarkBg ? 'text-white' : 'text-[#27689A]')
+                        ? isDarkBg
+                          ? "text-white"
+                          : "text-[#27689A]"
                         : isDarkBg
-                        ? 'text-white/80 hover:text-white'
-                        : 'text-[#172A3A] hover:text-[#27689A]'
+                          ? "text-white/80 hover:text-white"
+                          : "text-[#172A3A] hover:text-[#27689A]"
                     }`
                   }
                 >
@@ -82,7 +86,7 @@ const Navbar = () => {
                       {link.label}
                       <span
                         className={`absolute -bottom-1 left-0 h-0.5 bg-[#27689A] transition-all duration-300 ${
-                          isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                          isActive ? "w-full" : "w-0 group-hover:w-full"
                         }`}
                       />
                     </>
@@ -97,7 +101,9 @@ const Navbar = () => {
             <a
               href="tel:+1-000-000-0000"
               className={`flex items-center gap-2 text-sm font-medium transition-colors duration-200 ${
-                isDarkBg ? 'text-white hover:text-white/80' : 'text-[#27689A] hover:text-[#0B2E50]'
+                isDarkBg
+                  ? "text-white hover:text-white/80"
+                  : "text-[#27689A] hover:text-[#0B2E50]"
               }`}
               aria-label="Talk to our team"
             >
@@ -117,10 +123,12 @@ const Navbar = () => {
           <button
             id="mobile-menu-btn"
             className={`lg:hidden p-2 transition-colors ${
-              isDarkBg ? 'text-white hover:text-white/80' : 'text-[#0B2E50] hover:text-[#27689A]'
+              isDarkBg
+                ? "text-white hover:text-white/80"
+                : "text-[#0B2E50] hover:text-[#27689A]"
             }`}
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
           >
             {menuOpen ? <X size={26} /> : <Menu size={26} />}
@@ -142,17 +150,21 @@ const Navbar = () => {
               aria-hidden="true"
             />
             <motion.div
-              initial={{ x: '100%' }}
+              initial={{ x: "100%" }}
               animate={{ x: 0 }}
-              exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 30, stiffness: 300 }}
               className="fixed top-0 right-0 bottom-0 w-80 max-w-full bg-white z-50 flex flex-col shadow-2xl lg:hidden"
               role="dialog"
               aria-label="Mobile navigation menu"
             >
               {/* Mobile menu header */}
               <div className="flex items-center justify-between p-6 border-b border-[#D8D7D2]/60">
-                <img src={logo} alt="Medical Referral Hub" className="logo-img h-10 w-auto mix-blend-multiply" />
+                <img
+                  src={logo}
+                  alt="Medical Referral Hub"
+                  className="logo-img h-10 w-auto mix-blend-multiply"
+                />
                 <button
                   onClick={() => setMenuOpen(false)}
                   className="p-2 text-[#0B2E50] hover:text-[#27689A]"
@@ -178,8 +190,8 @@ const Navbar = () => {
                         className={({ isActive }) =>
                           `block px-4 py-3.5 text-base font-medium rounded-sm transition-colors duration-200 ${
                             isActive
-                              ? 'bg-[#0B2E50]/5 text-[#27689A]'
-                              : 'text-[#172A3A] hover:bg-[#F8F7F3] hover:text-[#27689A]'
+                              ? "bg-[#0B2E50]/5 text-[#27689A]"
+                              : "text-[#172A3A] hover:bg-[#F8F7F3] hover:text-[#27689A]"
                           }`
                         }
                       >

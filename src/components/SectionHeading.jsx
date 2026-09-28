@@ -17,9 +17,9 @@ const SectionHeading = ({
   dark = false,
 }) => {
   const alignClass = {
-    left: 'text-left items-start',
+    left: 'text-center items-center lg:text-left lg:items-start',
     center: 'text-center items-center',
-    right: 'text-right items-end',
+    right: 'text-center items-center lg:text-right lg:items-end',
   }[align];
 
   return (
